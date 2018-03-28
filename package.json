@@ -1,6 +1,6 @@
 {
   "name": "ffmpeg-extract-frames",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Extracts screenshots from a video.",
   "main": "index.js",
   "repository": "transitive-bullshit/ffmpeg-extract-frames",
