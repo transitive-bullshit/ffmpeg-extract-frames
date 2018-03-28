@@ -30,6 +30,10 @@ const filePattern = await extractFrames({
 })
 
 // filePattern = './screenshot-%i.jpg'
+// generated screenshots:
+// `./screenshot-1.jpg
+// `./screenshot-2.jpg
+// `./screenshot-3.jpg
 ```
 
 ## API
