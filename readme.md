@@ -67,7 +67,7 @@ For any other call, you should use the `%d` format specifier. I know this is con
 
 Type: `Array<Number>`
 
-Array of seek offset to take the screenshot from in milliseconds.
+Array of seek offsets to take the screenshot from in milliseconds.
 
 ##### timestamps
 
