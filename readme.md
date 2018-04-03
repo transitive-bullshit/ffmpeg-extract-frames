@@ -28,18 +28,31 @@ await extractFrames({
   ]
 })
 
-// filePattern = './screenshot-%i.jpg'
 // generated screenshots:
-// `./screenshot-1.jpg
-// `./screenshot-2.jpg
-// `./screenshot-3.jpg
+// ./screenshot-1.jpg
+// ./screenshot-2.jpg
+// ./screenshot-3.jpg
+```
+
+```js
+// default behavior is to extract all frames
+await extractFrames({
+  input: 'media/1.mp4',
+  output: './frame-%d.png'
+})
+
+// generated screenshots:
+// ./frame-1.png
+// ./frame-2.png
+// ...
+// ./frame-100.png
 ```
 
 ## API
 
 ### extractFrames(options)
 
-Extracts one or more frames from a video file. Returns a `Promise` for the full path pattern of the output screenshots.
+Extracts one or more frames from a video file. Returns a `Promise` for when all frames have been written.
 
 There are several options for specifying which frames to extract, namely `timestamps`, `offsets`, `fps`, and `numFrames`. The default behavior if you don't specify any of these options is to extract *all* frames from the input.
 
