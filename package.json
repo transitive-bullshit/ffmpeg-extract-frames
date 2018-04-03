@@ -1,7 +1,7 @@
 {
   "name": "ffmpeg-extract-frames",
   "version": "1.0.0",
-  "description": "Extracts screenshots from a video.",
+  "description": "Extracts frames from a video.",
   "main": "index.js",
   "repository": "transitive-bullshit/ffmpeg-extract-frames",
   "author": "Travis Fischer <travis@automagical.ai>",
@@ -16,11 +16,13 @@
   ],
   "devDependencies": {
     "ava": "^0.25.0",
+    "rmfr": "^2.0.0",
     "sharp": "^0.20.1",
     "standard": "^11.0.0",
     "tempy": "^0.2.1"
   },
   "dependencies": {
+    "ffmpeg-probe": "^1.0.1",
     "fluent-ffmpeg": "^2.1.2"
   }
 }

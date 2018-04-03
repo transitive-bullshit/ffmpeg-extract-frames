@@ -1,6 +1,6 @@
 # ffmpeg-extract-frames
 
-> Extracts screenshots from a video using [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg).
+> Extracts frames from a video using [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg).
 
 [![NPM](https://img.shields.io/npm/v/ffmpeg-extract-frames.svg)](https://www.npmjs.com/package/ffmpeg-extract-frames) [![Build Status](https://travis-ci.org/transitive-bullshit/ffmpeg-extract-frames.svg?branch=master)](https://travis-ci.org/transitive-bullshit/ffmpeg-extract-frames) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
@@ -18,10 +18,9 @@ yarn add ffmpeg-extract-frames
 const extractFrames = require('ffmpeg-extract-frames')
 
 // extract 3 frames at 1s, 2s, and 3.5s respectively
-const filePattern = await extractFrames({
+await extractFrames({
   input: 'media/1.mp4',
-  folder: '.',
-  filename: 'screenshot-%i.jpg',
+  output: './screenshot-%i.jpg',
   offsets: [
     1000,
     2000,
@@ -42,25 +41,27 @@ const filePattern = await extractFrames({
 
 Extracts one or more frames from a video file. Returns a `Promise` for the full path pattern of the output screenshots.
 
+There are several options for specifying which frames to extract, namely `timestamps`, `offsets`, `fps`, and `numFrames`. The default behavior if you don't specify any of these options is to extract *all* frames from the input.
+
 #### options
 
 ##### input
 
 Type: `String`
+**Required**
 
 Path or URL to a video file.
 
-##### folder
+##### output
 
 Type: `String`
+**Required**
 
-Output directory.
+Output file pattern.
 
-##### filename
+Note that for `timestamps` or `offsets`, the pattern should include a `%i` or `%s` ([details](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg#screenshotsoptions-dirname-generate-thumbnails)).
 
-Type: `String`
-
-Output file pattern including a `%i` 
+For any other call, you should use the `%d` format specifier. I know this is confusing, but it's how [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) works under the hood.
 
 ##### offsets
 
@@ -68,15 +69,23 @@ Type: `Array<Number>`
 
 Array of seek offset to take the screenshot from in milliseconds.
 
-Note: you must pass either `offsets` or `timestamps`, with `timestamps` taking precedence.
-
 ##### timestamps
 
 Type: `Array<Number|String>`
 
 Same as fluent-ffmpeg's [screenshots.timestamps](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg#screenshotsoptions-dirname-generate-thumbnails).
 
-Note: you must pass either `offsets` or `timestamps`, with `timestamps` taking precedence.
+##### fps
+
+Type: `Number`
+
+Frames per second to output.
+
+##### numFrames
+
+Type: `Number`
+
+Output a specific number of frames. The input video's frames will be skipped such that only this number of frames are output.
 
 ##### log
 
@@ -87,8 +96,9 @@ Optional function to log the underlying ffmpeg command (like `console.log`).
 
 ## Related
 
-- [ffmpeg-extract-frame](https://github.com/transitive-bullshit/ffmpeg-extract-frame) extracts a single frame from a video.
-- [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg)
+- [ffmpeg-extract-frame](https://github.com/transitive-bullshit/ffmpeg-extract-frame) - Extracts a single frame from a video.
+- [ffmpeg-generate-video-preview](https://github.com/transitive-bullshit/ffmpeg-generate-video-preview) - Generates an attractive image strip or GIF preview from a video.
+- [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) - A fluent API to [FFmpeg](http://ffmpeg.org/).
 
 ## License
 
