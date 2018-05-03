@@ -111,6 +111,7 @@ Optional function to log the underlying ffmpeg command (like `console.log`).
 
 - [ffmpeg-extract-frame](https://github.com/transitive-bullshit/ffmpeg-extract-frame) - Extracts a single frame from a video.
 - [ffmpeg-generate-video-preview](https://github.com/transitive-bullshit/ffmpeg-generate-video-preview) - Generates an attractive image strip or GIF preview from a video.
+- [gif-extract-frames](https://github.com/transitive-bullshit/gif-extract-frames) - Analogous module for extracting frames from GIF files.
 - [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg) - A fluent API to [FFmpeg](http://ffmpeg.org/).
 - [awesome-ffmpeg](https://github.com/transitive-bullshit/awesome-ffmpeg) - A curated list of awesome ffmpeg resources with a focus on JavaScript.
 
