@@ -2,7 +2,7 @@
 
 > Extracts frames from a video using [fluent-ffmpeg](https://github.com/fluent-ffmpeg/node-fluent-ffmpeg).
 
-[![NPM](https://img.shields.io/npm/v/ffmpeg-extract-frames.svg)](https://www.npmjs.com/package/ffmpeg-extract-frames) [![Build Status](https://travis-ci.org/transitive-bullshit/ffmpeg-extract-frames.svg?branch=master)](https://travis-ci.org/transitive-bullshit/ffmpeg-extract-frames) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/ffmpeg-extract-frames.svg)](https://www.npmjs.com/package/ffmpeg-extract-frames) [![Build Status](https://travis-ci.com/transitive-bullshit/ffmpeg-extract-frames.svg?branch=master)](https://travis-ci.com/transitive-bullshit/ffmpeg-extract-frames) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
