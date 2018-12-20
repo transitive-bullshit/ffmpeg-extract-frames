@@ -107,6 +107,12 @@ Default: `noop`
 
 Optional function to log the underlying ffmpeg command (like `console.log`).
 
+##### ffmpegPath
+
+Type: `String`
+
+Specify a path for ffmpeg binaries. Use this property to set a different path for ffmpeg binaries.
+
 ## Related
 
 - [ffmpeg-extract-frame](https://github.com/transitive-bullshit/ffmpeg-extract-frame) - Extracts a single frame from a video.
