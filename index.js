@@ -30,7 +30,7 @@ module.exports = async (opts) => {
   if (ffmpegPath) {
     ffmpeg.setFfmpegPath(ffmpegPath)
   }
-  
+
   const cmd = ffmpeg(input)
     .on('start', (cmd) => log({ cmd }))
 
