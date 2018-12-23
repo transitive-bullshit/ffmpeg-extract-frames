@@ -111,7 +111,7 @@ Optional function to log the underlying ffmpeg command (like `console.log`).
 
 Type: `String`
 
-Specify a path for ffmpeg binaries. Use this property to set a different path for ffmpeg binaries.
+Specify a path for the ffmpeg binary.
 
 ## Related
 
