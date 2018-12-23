@@ -18,7 +18,8 @@ module.exports = async (opts) => {
     timestamps,
     offsets,
     fps,
-    numFrames
+    numFrames,
+    ffmpegPath
   } = opts
 
   if (!input) throw new Error('missing required input')
@@ -26,6 +27,10 @@ module.exports = async (opts) => {
 
   const outputPath = path.parse(output)
 
+  if (ffmpegPath) {
+    ffmpeg.setFfmpegPath(ffmpegPath)
+  }
+  
   const cmd = ffmpeg(input)
     .on('start', (cmd) => log({ cmd }))
 
