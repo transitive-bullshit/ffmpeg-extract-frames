@@ -27,9 +27,10 @@ module.exports = async (opts) => {
 
   const outputPath = path.parse(output)
 
-  if (typeof ffmpegPath !== 'undefined' && ffmpegPath !== '') {
+  if (ffmpegPath) {
     ffmpeg.setFfmpegPath(ffmpegPath)
   }
+  
   const cmd = ffmpeg(input)
     .on('start', (cmd) => log({ cmd }))
 
