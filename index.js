@@ -6,6 +6,15 @@ const probe = require('ffmpeg-probe')
 
 const noop = () => { }
 
+const applyVFList = (cmd, list) => {
+  if (!Array.isArray(list) || list.length === 0) {
+    return
+  }
+  cmd.outputOptions([
+    '-vf', list.join(',')
+  ])
+}
+
 module.exports = async (opts) => {
   const {
     log = noop,
@@ -19,7 +28,8 @@ module.exports = async (opts) => {
     offsets,
     fps,
     numFrames,
-    ffmpegPath
+    ffmpegPath,
+    forceSARRatio
   } = opts
 
   if (!input) throw new Error('missing required input')
@@ -34,9 +44,17 @@ module.exports = async (opts) => {
   const cmd = ffmpeg(input)
     .on('start', (cmd) => log({ cmd }))
 
+  const vfList = []
+
+  if (Boolean(forceSARRatio)) {
+    vfList.push('scale=iw*sar:ih')
+  }
+
   if (timestamps || offsets) {
     const folder = outputPath.dir
     const filename = outputPath.base
+
+    applyVFList(cmd, vfList)
 
     return new Promise((resolve, reject) => {
       cmd
@@ -60,8 +78,8 @@ module.exports = async (opts) => {
 
       cmd.outputOptions([
         '-vsync', 'vfr',
-        '-vf', `select=not(mod(n\\,${nthFrame}))`
       ])
+      vfList.push(`select=not(mod(n\\,${nthFrame}))`)
     }
 
     if (outputPath.ext === '.raw') {
@@ -69,6 +87,8 @@ module.exports = async (opts) => {
         '-pix_fmt', 'rgba'
       ])
     }
+
+    applyVFList(cmd, vfList)
 
     return new Promise((resolve, reject) => {
       cmd

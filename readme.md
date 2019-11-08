@@ -113,6 +113,13 @@ Type: `String`
 
 Specify a path for the ffmpeg binary.
 
+##### forceSARRatio
+
+Type: `Boolean`
+Default: false
+
+Force ffmpeg to use `scale=iw*sar:ih` video filter to use SampleAspectRatio as aspect ratio for thumbnail images.
+
 ## Related
 
 - [ffmpeg-extract-frame](https://github.com/transitive-bullshit/ffmpeg-extract-frame) - Extracts a single frame from a video.
