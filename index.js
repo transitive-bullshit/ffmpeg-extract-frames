@@ -29,7 +29,9 @@ module.exports = async (opts) => {
     fps,
     numFrames,
     ffmpegPath,
-    forceSARRatio
+    forceSARRatio,
+    startOffset,
+    duration,
   } = opts
 
   if (!input) throw new Error('missing required input')
@@ -48,6 +50,14 @@ module.exports = async (opts) => {
 
   if (Boolean(forceSARRatio)) {
     vfList.push('scale=iw*sar:ih')
+  }
+  
+  if (startOffset) {
+    cmd.addInputOptions(["-ss", parseInt(startOffset, 10)]);
+  }
+
+  if (duration) {
+    cmd.addInputOptions(["-t", parseInt(duration, 10)]);
   }
 
   if (timestamps || offsets) {
@@ -73,7 +83,10 @@ module.exports = async (opts) => {
       ])
     } else if (numFrames) {
       const info = await probe(input)
-      const numFramesTotal = parseInt(info.streams[0].nb_frames)
+      let numFramesTotal = parseInt(info.streams[0].nb_frames)
+      if (isNaN(numFramesTotal)) {
+        numFramesTotal = Math.ceil((info.duration / 1000) * info.fps);
+      }
       const nthFrame = (numFramesTotal / numFrames) | 0
 
       cmd.outputOptions([
@@ -87,6 +100,7 @@ module.exports = async (opts) => {
         '-pix_fmt', 'rgba'
       ])
     }
+
 
     applyVFList(cmd, vfList)
 

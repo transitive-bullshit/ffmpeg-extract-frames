@@ -4,6 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/ffmpeg-extract-frames.svg)](https://www.npmjs.com/package/ffmpeg-extract-frames) [![Build Status](https://travis-ci.com/transitive-bullshit/ffmpeg-extract-frames.svg?branch=master)](https://travis-ci.com/transitive-bullshit/ffmpeg-extract-frames) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+> This is a fork from the orginal (which seemed to have stopped accpeting PRs).  I've added some additional parameters/options to pass into the process (and fixed some bugs with frame offsets)
+
 ## Install
 
 ```bash
@@ -119,6 +121,18 @@ Type: `Boolean`
 Default: false
 
 Force ffmpeg to use `scale=iw*sar:ih` video filter to use SampleAspectRatio as aspect ratio for thumbnail images.
+
+##### startOffset
+
+Type: `Number`
+
+Start the frame extraction from the given offset (in seconds)
+
+##### duration
+
+Type: `Number`
+
+Run the extraction for only the given duration (in seconds)
 
 ## Related
 
