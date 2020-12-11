@@ -1,10 +1,16 @@
 {
   "name": "ffmpeg-extract-frames",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Extracts frames from a video.",
   "main": "index.js",
   "repository": "transitive-bullshit/ffmpeg-extract-frames",
   "author": "Travis Fischer <travis@automagical.ai>",
+  "contributors": [
+    {
+      "name" : "Adam Hunter"
+      , "url" : "https://github.com/adamrhunter"
+    }
+  ],
   "license": "MIT",
   "reveal": true,
   "scripts": {
